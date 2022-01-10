@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-export const ShipStats = () => {
+export const ShipStats = (props) => {
   return (
     <Stats>
       <StatRow>
         <StatData>
-          <StatTitle>HP</StatTitle>
+          <StatTitle>HEALTH</StatTitle>
           <StatValue>
-            10 / 400
+             {props.stats.hp}
           </StatValue>
         </StatData>
         <SeperatorLine />
@@ -15,21 +15,21 @@ export const ShipStats = () => {
       <StatRow>
         <StatData>
           <StatTitle>ATTACK</StatTitle>
-          <StatValue>25</StatValue>
+          <StatValue>{props.stats.attack}</StatValue>
         </StatData>
         <SeperatorLine />
       </StatRow>
       <StatRow>
         <StatData>
-          <StatTitle>SHIELD</StatTitle>
-          <StatValue>100</StatValue>
+          <StatTitle>TRAVEL SPEED</StatTitle>
+          <StatValue>{props.stats.travelSpeed}</StatValue>
         </StatData>
         <SeperatorLine />
       </StatRow>
       <StatRow>
         <StatData>
-          <StatTitle>SPEED</StatTitle>
-          <StatValue>5</StatValue>
+          <StatTitle>MINING SPEED</StatTitle>
+          <StatValue>{props.stats.miningSpeed}</StatValue>
         </StatData>
         <SeperatorLine />
       </StatRow>
@@ -54,15 +54,14 @@ const StatRow = styled.div`
 `;
 const StatTitle = styled.div`
   color: #ffffff;
-  width: 43.23px;
+  width: auto;
   height: 26.79px;
-  font-size: 14px;
+  font-size: 12px;
   font-family: Rajdhani;
   font-weight: 500;
   letter-spacing: 0.64px;
 `;
 const StatData = styled.div`
-  width: 127.04px;
   margin-left: 7.32px;
   display: flex;
   flex-direction: row;

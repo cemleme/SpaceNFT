@@ -2,7 +2,7 @@ import { useMoralis } from "react-moralis";
 import { useCallback, useEffect, useState } from "react";
 import abi from "../constants/abi.json";
 
-const contractAddress = "0xc4885978C12b46db27012193CE6890Df23a2B896";
+const contractAddress = "0xF409B39CF3a852B1314520CA814D865Db42ef9B1";
 
 const useContract = () => {
   const [contract, setContract] = useState(null);

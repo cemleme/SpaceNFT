@@ -1,32 +1,40 @@
 import React from "react";
 import styled from "styled-components";
-import {ReactComponent as IconCrystal} from './Crystal.svg';
-import {ReactComponent as IconMineral} from './Mineral.svg';
+import { ReactComponent as IconCrystal } from "./Crystal.svg";
+import { ReactComponent as IconMineral } from "./Mineral.svg";
+import { useMoralis } from "react-moralis";
 
 export const UserData = () => {
+  const { isAuthenticated, account, logout } = useMoralis();
   return (
-    <UserDataRoot>
-      <Disconnect>DISCONNECT</Disconnect>
-      <UserAddress>0XAA...B24S</UserAddress>
-      <Assets>
-        <Mineral>
-          <MineralAmount>23434234234234</MineralAmount>
-          <IconMineral />
-        </Mineral>
-        <Crystal>
-          <CrystalAmount>2500</CrystalAmount>
-          <IconCrystal />
-        </Crystal>
-        <Fuel>
-          <FuelAmount>23434234234234</FuelAmount>
-          <Mineral1
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/rendition-prod.appspot.com/o/98d12377-0073-4eee-8c91-e9528a618316.png?alt=media&token=0b0e5941-c292-4acb-b864-b92c78a2bde9"
-            }
-          />
-        </Fuel>
-      </Assets>
-    </UserDataRoot>
+    <>
+      {isAuthenticated && account && (
+        <UserDataRoot>
+          <Disconnect onClick={logout}>DISCONNECT</Disconnect>
+          <UserAddress>
+            {account.substring(0, 4)}...{account.substring(account.length - 4)}
+          </UserAddress>
+          <Assets>
+            <Mineral>
+              <MineralAmount>23434234234234</MineralAmount>
+              <IconMineral />
+            </Mineral>
+            <Crystal>
+              <CrystalAmount>2500</CrystalAmount>
+              <IconCrystal />
+            </Crystal>
+            <Fuel>
+              <FuelAmount>23434234234234</FuelAmount>
+              <Mineral1
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/rendition-prod.appspot.com/o/98d12377-0073-4eee-8c91-e9528a618316.png?alt=media&token=0b0e5941-c292-4acb-b864-b92c78a2bde9"
+                }
+              />
+            </Fuel>
+          </Assets>
+        </UserDataRoot>
+      )}
+    </>
   );
 };
 const UserDataRoot = styled.div`

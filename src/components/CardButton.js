@@ -27,7 +27,7 @@ const textMotion = {
 export const CardButton = (props) => {
   return (
     <motion.div initial="rest" whileHover="hover" animate="rest">
-      <Button variants={buttonMotion}>
+      <Button variants={buttonMotion} onClick={props.buttonHandler}>
         <Title1 variants={textMotion}>{props.title}</Title1>
       </Button>
     </motion.div>

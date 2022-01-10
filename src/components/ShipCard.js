@@ -15,18 +15,18 @@ const imageMotion = {
   },
 };
 
-export const ShipCard = () => {
+export const ShipCard = (props) => {
   return (
     <ShipCardRoot initial="rest" whileHover="hover" animate="rest">
       <ContentBG>
-        <Title>Test Range</Title>
+        <Title>{props.shipData.modelName}</Title>
         <Group>
-          <ShipStats />
+          <ShipStats stats={props.shipData}/>
           <Buttons>
             <CardButton title='METADATA2' />
             <CardButton title='UPGRADE' />
             <CardButton title='ADD TO FLEET' />
-            <CardButton title='INSPECT 3D' />
+            <CardButton title='INSPECT 3D' buttonHandler={props.onInspect} />
           </Buttons>
         </Group>
       </ContentBG>

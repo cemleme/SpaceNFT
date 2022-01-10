@@ -1,5 +1,5 @@
 import { Suspense, useRef, useState } from "react";
-import "./App.css";
+import "../App.css";
 import { Html, useProgress } from '@react-three/drei'
 import {
   Canvas,

@@ -28,9 +28,9 @@ const contentMotion = {
     }
   };
 
-export const ShopCard = () => {
+export const ShopCard = (props) => {
   return (
-    <ShopItem initial="rest" whileHover="hover" animate="rest">
+    <ShopItem initial="rest" whileHover="hover" animate="rest" onClick={props.buttonHandler}>
       <ShopImageHolder>
         <ShopImage
           src={
@@ -42,7 +42,7 @@ export const ShopCard = () => {
       </ShopImageHolder>
 
       <motion.div className="shopCardTitle" variants={contentMotion}>
-        combat vehicles
+        {props.title}
       </motion.div>
     </ShopItem>
   );
