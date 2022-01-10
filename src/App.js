@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { TopMenu } from "./TopMenu";
+import { useSelector } from "react-redux";
+import { Shop } from "./pages/Shop.js";
+import { Fleet } from "./pages/Fleet.js";
+import { Explore } from "./pages/Explore.js";
+import { UserData } from "./components/UserData.js";
+import styled from "styled-components";
+import "./App.css";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="bgOverlay" />
+
+        <BrowserRouter>
+          <TopMenu />
+          <Routes>
+            <Route path="/explore" element={
+              <div className="mainContent">
+                      <div className='pageTitle'> Explore </div>
+                      <Explore />
+              </div>} />
+
+            <Route path="/shop" element={
+              <div className="mainContent">
+                      <div className='pageTitle'> Shop </div>
+                      <Shop />
+              </div>} />
+
+            <Route path="/fleet" element={
+              <div className="mainContent">
+                      <div className='pageTitle'> Fleet </div>
+                      <Fleet />
+              </div>} />
+          </Routes>
+        </BrowserRouter>
+      <UserData />
+    </>
   );
 }
 
-export default App;
+const Menu__darkerBG = styled.div`
+  background-color: #161616bd;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
